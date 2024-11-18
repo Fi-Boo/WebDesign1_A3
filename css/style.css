@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    box-sizing: border-box;   
+    box-sizing: border-box;      
 }
 
 .amatic-sc-regular {
@@ -42,15 +42,10 @@ a {
     transition: none !important;
 }
 
-.transition {
-    transition: var(--animation-timing);
-}
-
-
 html, body {
     width: 100%;
     min-height: 100vh;
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 html {
@@ -60,7 +55,7 @@ html {
 body {
     width: 100vw;
     height: 100vh;
-    background: url(images/background.jpeg);
+    background: url(../images/background.jpeg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -74,7 +69,9 @@ body {
     top: 0;
     width: 100vw;
     display: flex;
-    background: linear-gradient(to bottom, rgb(0,0,0,0.5), transparent);
+    background: linear-gradient(to bottom, rgb(0,0,0,0.75), transparent);
+    z-index: 100;
+    transition: var(--animation-timing);
 }
 
 .header-area.hide {
@@ -87,6 +84,7 @@ nav {
     width: 100%;
     max-width: 1366px;
     margin: 0 auto;
+    transition: var(--animation-timing);
 
 }
 
@@ -96,11 +94,22 @@ nav {
     position: absolute;
     margin: 0.5rem 1rem;
     align-self: center;
-    background: url(images/lilac-valley-logo.png);
+    background: url(../images/lilac-valley-logo.png);
     background-size: contain;
     border-radius: 50%;
     box-shadow: var(--black-shadow);
     z-index: 100;
+    cursor:pointer;
+    transition: var(--animation-timing);
+}
+
+.business-logo:hover {
+    height: var(--nav-height);
+    flex-grow: 2;
+}
+
+.business-logo:active {
+    box-shadow: 0px 0px 10px 5px var(--red);
 }
 
 nav ul {
@@ -159,6 +168,7 @@ nav ul li:last-child:hover h2 {
     margin: 1rem;
     z-index: 100;
     filter: drop-shadow(0px 0px 10px rgb(0,0,0,1));
+    cursor: pointer;
 }
 
 /* creates the 3 dashes*/
@@ -174,8 +184,8 @@ nav ul li:last-child:hover h2 {
     width: 3rem;
     height: 5px;
     background: var(--bone-white);
-    transition: var(--animation-timing);
     border-radius: 555px;
+    transition: var(--animation-timing);
 }
 
 .hamburger-menu input {
@@ -213,22 +223,19 @@ nav ul li:last-child:hover h2 {
 
 .home-text {
     position: fixed;
-    top: 50%;
+    bottom: 50%;
+    right: 5vw;
     width: 100%;
     text-align: right;
     font-size: 7vw;
-    padding-right: 5vw;
     color: var(--bone-white);
     text-shadow: 2px 2px 5px black;
-    overflow: hidden;
     z-index: -10;
 }
 
 main {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    border :1px solid red;
-    height: 100vh;
 }
 
 .section-pad {
@@ -243,3 +250,91 @@ main {
     scroll-snap-align: start;
 }
 
+.down-icon {
+    width: 5rem;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 4s alternate infinite peek;
+    animation-delay: 2s; 
+    cursor: pointer;
+}
+
+.down-icon:hover {
+    animation: none;
+    bottom: -1.5rem; 
+}
+
+.down-icon a img {
+    width: 100%;
+}
+
+@keyframes peek {
+    0% {
+        bottom: -5rem;
+    }
+    75% {
+        bottom: -1.5rem;
+    }
+    100% {
+        bottom: -1.5rem;
+    }
+}
+
+
+@media only screen and (min-width:601px) {
+    .home-text {
+        font-size: 3rem;
+    }
+}
+
+
+@media only screen and (min-width:901px) {
+    .home-text {
+        bottom: 10%;
+        right: 52%;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    nav ul {
+        position: relative;
+        height: var(--nav-height);
+        overflow: visible;
+        display: flex;
+        margin: 0 2rem;
+        padding: 0;
+        width: 35rem;
+        float: right;
+        justify-content: space-between;
+        background: transparent;
+    }
+
+    nav ul li {
+        align-content: center;
+        border-top: none;
+        width: 100%;
+    }
+
+
+    nav ul li:last-child h2 {
+        margin: 0;
+    }
+
+    nav ul li:first-child:hover *, nav ul li:nth-child(2):hover *, nav ul li:nth-child(3):hover * {
+        background: transparent;
+        color: var(--mustard);
+        border-bottom: 2px solid var(--bone-white);
+        padding-bottom: 0.5rem;
+
+    }
+}
+
+
+@media only screen and (min-width:1201px) {
+    
+}
