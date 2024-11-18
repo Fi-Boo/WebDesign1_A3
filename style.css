@@ -1,0 +1,245 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;   
+}
+
+.amatic-sc-regular {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.amatic-sc-bold {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+li {
+    list-style: none;
+}
+
+:root {
+    --animation-timing: all 0.25s ease-in-out;
+    --nav-height: 6rem;
+    --black-shadow: 0px 0px 10px 5px rgb(0,0,0,0.5);
+    --red: #873627;
+    --mustard: #BAB02D;
+    --blue: #1D77A5;
+    --bone-white: #F4F4F4; 
+}
+
+/* removes anchor link decorations */
+a { 
+    text-decoration: none; 
+}
+
+/* disables transition effect */
+.no-transition * {
+    transition: none !important;
+}
+
+.transition {
+    transition: var(--animation-timing);
+}
+
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: clip;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url(images/background.jpeg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -100;
+}
+
+.header-area {
+    position: fixed;
+    height: var(--nav-height);
+    top: 0;
+    width: 100vw;
+    display: flex;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5), transparent);
+}
+
+.header-area.hide {
+    top: calc(var(--nav-height) * -1);
+}
+
+nav {
+    position: relative;
+    height: var(--nav-height);
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+
+}
+
+.business-logo {
+    height: calc(var(--nav-height) - 1rem);
+    aspect-ratio: 1/1;
+    position: absolute;
+    margin: 0.5rem 1rem;
+    align-self: center;
+    background: url(images/lilac-valley-logo.png);
+    background-size: contain;
+    border-radius: 50%;
+    box-shadow: var(--black-shadow);
+    z-index: 100;
+}
+
+nav ul {
+    position: absolute;
+    top: 0;
+    padding-top: calc(var(--nav-height) + 1rem);
+    height: 0;
+    width: 100vw;
+    text-align: center;
+    overflow-y: hidden;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5), transparent);
+    transition: var(--animation-timing);
+}
+
+.hamburger-menu:has(input:checked) ~ ul {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5) 30%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+nav ul li {
+    line-height: 4rem;
+    font-size: 1.5rem;
+    border-top: 2px solid rgb(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 2px rgb(0,0,0,1);
+}
+
+nav ul li a, nav ul li a:visited {
+    color: var(--bone-white);
+}
+
+nav ul li:hover * {
+    background: var(--bone-white);
+    color: var(--red);
+}
+
+nav ul li:last-child h2 {
+    background: var(--mustard);
+    box-shadow: 2px 2px 2px 0px black;
+    width: 10rem;
+    margin: 2rem auto;
+    transform: rotate(-5deg);  
+}
+
+nav ul li:last-child:hover h2 {
+    transform:rotate(5deg);
+    background: var(--blue);
+    color: var(--mustard);
+}
+
+.hamburger-menu {
+    height: 4rem;
+    aspect-ratio: 1/1;
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+    z-index: 100;
+    filter: drop-shadow(0px 0px 10px rgb(0,0,0,1));
+}
+
+/* creates the 3 dashes*/
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    margin: 0 auto;
+    width: 3rem;
+    height: 5px;
+    background: var(--bone-white);
+    transition: var(--animation-timing);
+    border-radius: 555px;
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    outline: none;
+    pointer-events: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hamburger-menu::before {
+    top: 1rem;
+}
+
+.hamburger-menu::after {
+    bottom: 1rem;
+}
+
+/* turns the 3 dashes to the */ 
+.hamburger-menu input:checked {
+    width: 2.4rem;
+    opacity: 0;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    width: 2.4rem;
+    rotate: -45deg;
+}
+
+.hamburger-menu:has(input:checked)::after {
+    width: 2.4rem;
+    rotate: 45deg;
+}
+
+.home-text {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    text-align: right;
+    font-size: 7vw;
+    padding-right: 5vw;
+    color: var(--bone-white);
+    text-shadow: 2px 2px 5px black;
+    overflow: hidden;
+    z-index: -10;
+}
+
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    border :1px solid red;
+    height: 100vh;
+}
+
+.section-pad {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.info-container {
+    position: relative;
+    height: 100vh;
+    background: #e6d7d4;
+    scroll-snap-align: start;
+}
+
