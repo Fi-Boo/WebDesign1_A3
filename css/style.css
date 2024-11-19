@@ -560,6 +560,7 @@ main::-webkit-scrollbar {
 
 footer {
     height: fit-content;
+    min-height: 95vh;
     background: rgb(0,0,0,0.5);
     z-index: 15;
     color: var(--bone-white);
@@ -579,7 +580,7 @@ footer hr {
     max-width: 1366px;
     margin: 0 auto;
     background: linear-gradient(to bottom, #f9dcaf, transparent 20%);
-    padding: 5rem 1rem;
+    padding: 8rem 1rem;
 }
 
 .footer-container div {
