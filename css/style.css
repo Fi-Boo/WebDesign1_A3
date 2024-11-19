@@ -1,0 +1,848 @@
+/* ==========BASIC UNIVERSAL STYLING & CLEAN UP============= */
+    /* some basic css resetting */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;      
+}
+
+.amatic-sc-bold {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+a { text-decoration: none; }
+li { list-style: none; }
+
+:root {
+    --animation-timing: all 0.25s ease-in-out;
+    --nav-height: 6rem;
+    --black-shadow: 0px 0px 10px 5px rgb(0,0,0,0.5);
+    --red: #873627;
+    --mustard: #BAB02D;
+    --blue: #1D77A5;
+    --bone-white: #F4F4F4; 
+    --pink: #e6d7d4;
+}
+
+/* disables transition effect - this is applied via JS when resizing*/
+.no-transition * {
+    transition: none !important;
+}
+
+html, body, main {
+    width: 100%;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: clip;
+}
+
+body {
+    height: 100vh;
+    background: url(../images/background.jpeg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -10;
+    font-family: "Raleway", serif;
+}
+
+
+/* ==========HEADER============= */
+
+.header-area {
+    position: fixed;
+    height: var(--nav-height);
+    top: 0;
+    width: 100vw;
+    display: flex;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.75), transparent);
+    z-index: 100;
+    transition: var(--animation-timing);
+}
+
+/* used with JS scroll event to hide/show the nav depending on scroll direction */
+.header-area.hide {
+    top: calc(var(--nav-height) * -1.1);
+}
+
+
+/* ==========LOGO============= */
+
+
+.business-logo {
+    height: calc(var(--nav-height) - 1rem);
+    aspect-ratio: 1/1;
+    position: absolute;
+    margin: 0.5rem 1rem;
+    align-self: center;
+    border-radius: 50%;
+    box-shadow: var(--black-shadow);
+    z-index: 100;
+    cursor:pointer;
+    transition: var(--animation-timing);
+}
+
+.business-logo img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.business-logo:hover {
+    box-shadow: 0px 0px 5px 5px var(--red);
+}
+
+.business-logo:active {
+    box-shadow: 0px 0px 10px 5px var(--mustard);
+}
+
+/* ==========NAVIGATION============= */
+
+nav {
+    position: relative;
+    height: var(--nav-height);
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    transition: var(--animation-timing);
+}
+
+nav ul {
+    position: absolute;
+    top: 0;
+    padding-top: calc(var(--nav-height) + 1rem);
+    height: 0;
+    width: 100vw;
+    max-width: 1366px;
+    text-align: center;
+    overflow-y: hidden;
+    transition: var(--animation-timing);
+}
+
+nav ul li {
+    line-height: 4rem;
+    font-size: 1.5rem;
+    border-top: 2px solid rgb(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 2px rgb(0,0,0,1);
+}
+
+nav ul li a, nav ul li a:visited {
+    color: var(--bone-white);
+}
+
+nav ul li:hover * {
+    background: var(--bone-white);
+    color: var(--red);
+}
+
+nav ul li:last-child h2 {
+    background: var(--mustard);
+    box-shadow: 2px 2px 2px 0px black;
+    width: 10rem;
+    margin: 2rem auto;
+    transform: rotate(-5deg);  
+}
+
+nav ul li:last-child:hover h2 {
+    transform:rotate(5deg);
+    background: var(--blue);
+    color: var(--mustard);
+    border-bottom: none;
+}
+
+/* Hamburger menu - I went with a custom one based on the following Youtube tutorial
+   https://www.youtube.com/watch?v=dAIVbLrAb_U
+   I like the hamburger to X animation. */
+
+.hamburger-menu {
+    height: calc(var(--nav-height) * 0.66);
+    aspect-ratio: 1/1;
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+    z-index: 100;
+    filter: drop-shadow(0px 0px 10px rgb(0,0,0,1));
+    cursor: pointer;
+}
+
+.hamburger-menu:has(input:checked) ~ ul {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5) 30%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+/* creates the 3 dashes */
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    margin: 0 auto;
+    width: calc(var(--nav-height) / 2);
+    height: 5px;
+    background: var(--bone-white);
+    border-radius: 555px;
+    transition: var(--animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    outline: none;
+    pointer-events: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hamburger-menu::before {
+    top: calc(var(--nav-height) / 6);
+}
+
+.hamburger-menu::after {
+    bottom: calc(var(--nav-height) / 6);
+}
+
+/* turns the 3 dashes to the X */ 
+
+.hamburger-menu input:checked {
+    width: calc(var(--nav-height) * 0.4);
+    opacity: 0;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    width: calc(var(--nav-height) * 0.4);
+    rotate: -45deg;
+}
+
+.hamburger-menu:has(input:checked)::after {
+    width: calc(var(--nav-height) * 0.4);
+    rotate: 45deg;
+}
+
+/* ==========MAIN BODY CONTENT============= */
+
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+.home-text {
+    position: fixed;
+    top: 50%;
+    right: 5vw;
+    width: 100%;
+    text-align: right;
+    font-size: 1.5rem;
+    color: var(--bone-white);
+    text-shadow: 2px 2px 5px black;
+    z-index: -10;
+}
+
+/* animated goat head popping up from the bottom of the main screen 
+   Also acts as a scroll down button when clicked */
+.down-icon {
+    width: var(--nav-height);
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: calc(var(--nav-height) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 4s alternate infinite peek;
+    animation-delay: 2s; 
+    cursor: pointer;
+}
+
+.down-icon:hover {
+    animation: none;
+    bottom: calc(var(--nav-height) * -0.3); 
+}
+
+.down-icon a img {
+    width: 100%;
+}
+
+/* peaking animation. Stays up for longer than it hides away */
+
+@keyframes peek {
+    0% {
+        bottom: calc(var(--nav-height) * -1);
+    }
+    25% {
+        bottom:  calc(var(--nav-height) * -1);
+    }
+    40% {
+        bottom:  calc(var(--nav-height) * -0.3);
+    }
+    100% {
+        bottom:  calc(var(--nav-height) * -0.3);
+    }
+}
+
+#section-pad {
+    height: 100vh;
+}
+
+/* ==========SECTION 1 STYLING============= */
+
+/* Definitely the longest section to style. I wanted the images to appear as the user scrolls down the page. A LOT of trial and error as there were no tutorials. */
+
+
+#about-us {
+    position: relative;
+    height: fit-content;
+    background: linear-gradient(to bottom, transparent, rgb(0,0,0,0.5) 3%) ;
+    scroll-snap-align: start;
+}
+
+.info-img {
+    width: 100vw;
+    aspect-ratio: 16/9;
+    position: fixed;
+    top: 0;
+    right: -110vw;
+    z-index: 10;
+    background: linear-gradient(to top, transparent, var(--pink) 0.5rem);
+}
+
+.info-img img {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    transition: var(--animation-timing);
+    z-index: 11;
+    top: 0;
+    right: -110vw;
+    box-shadow: none;
+}
+
+.info-content-container {
+    width: 100%;
+    max-width: 1366px;
+    background: var(--pink) url(../images/farm-animals.png);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 10px 5px rgb(0,0,0,0.75);
+    min-height: 100vh;
+    height: fit-content;
+    padding: 0 1rem;
+}
+
+.info-content h3 {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.info-content {
+    line-height: 1.5rem;
+}
+
+.info-content:last-child {
+    padding-bottom: 5rem;
+}
+
+.info-content * {
+    margin-top: 1rem;
+}
+
+
+/* ==========SECTION 2 STYLING============= */
+
+/* pure css masonry gallery. Automatically reduces columns based on size. Simple and clean. Very 'in' trend that seems to be used a lot these days. */
+/* https://www.youtube.com/watch?v=RuJyYiRttpI */
+/* I removed the coloured background to allow the white silhouettes background show through but there isn't enough space between the images. */
+
+#gallery {
+    position: relative;
+    height: fit-content;
+    background: rgb(0,0,0,0.5);
+    scroll-snap-align: start;
+    z-index: 15;
+}
+
+.gallery-container {
+    width: 100%;
+    min-height: 100vh;
+    max-width:1366px;
+    margin: 0 auto;
+    background: url(../images/farm-animals.png);
+    background-size: contain;
+    background-blend-mode: darken;
+    background-position: left;
+    padding-top: 1rem;   
+}
+
+.gallery-container h2 {
+    color: var(--bone-white);
+    text-shadow: 0px 0px 5px black;
+}
+
+.gallery-container h2, .contact-us-container h2, .book-now-container h2 {
+    font-size: 2rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px; 
+    padding-top: 2rem;
+}
+
+.image-container {
+    columns: 3 340px;
+    gap: 1rem;
+    margin: 1rem 1rem 0;
+}
+
+.image-container img {
+    width: 100%;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 2px 2px rgb(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+/* ==========SECTION 3 STYLING============= */
+/* simple ordinary form. Nothing special or unique here */
+
+#contact-us {
+    height: fit-content;
+    background: rgb(0,0,0,0.5);
+    scroll-snap-align: start;
+    z-index: 15;
+}
+
+.contact-us-container {
+    background: #f9dcaf url(../images/confused_goat.jpeg);
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+.contact-us-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.contact-us-form input {
+    font-size: 1.25rem;
+    text-align: center;
+    height: 2rem;
+}
+
+.contact-us-form textarea {
+    height: 6rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.contact-us-form textarea::placeholder, .contact-us-form input::placeholder {
+    font-family: "Raleway", serif;
+    font-size: 1rem;
+}
+
+#newsletter-subscribe {
+    transform: translateY(0.65rem);
+    width: 1.5rem;
+}
+
+.contact-us-form button, .booking-form button {
+    font-size: 2rem;
+    width: 10rem;
+    margin: 1rem auto;
+    height: 2.5rem;
+    background: var(--mustard);
+    color: var(--bone-white);
+    text-shadow: 2px 2px 3px black;
+    box-shadow: 2px 2px 3px black;
+    transform: rotate(-5deg);
+}
+
+.contact-us-form button:hover, .booking-form button:hover {
+    background: var(--blue);
+    color: var(--mustard);
+    transform: rotate(5deg);
+}
+
+
+/* ==========SECTION 4 STYLING============= */
+/* another simple ordinary form. I guess the white silhouettes of the animals gets to stand out a lil more here */
+
+#book-now {
+    height: fit-content;
+    background: rgb(0,0,0,0.5);
+    scroll-snap-align: start;
+    z-index: 15;
+}
+
+.book-now-container {
+    background: #f9dcaf url(../images/farm-animals.png);
+    background-position-x: right;
+    min-height: 100vh;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.book-now-container h3 {
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.book-now-container form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.book-now-container form div {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.book-now-container form div input, .book-now-container form div select {
+    height: 2rem;
+    text-align: center;
+    width: 15rem;
+    margin: 0 auto;
+    font-size: 1.25rem;
+}
+
+.booking-form button {
+    margin-top: 4rem;
+}
+
+.book-now-container ul {
+    margin: 0 auto;
+}
+
+.book-now-container ul li {
+    list-style-type: circle;
+    margin-left: 1rem;
+    line-height: 1.5rem;
+}
+
+.book-now-container ul li:first-child {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.book-now-container hr {
+    border: 1px solid black;
+    margin: 1rem auto;
+    width: 50%;
+}
+
+/* ==========FOOTER STYLIING============= */
+
+footer {
+    height: fit-content;
+    background: rgb(0,0,0,0.5);
+    z-index: 15;
+    color: var(--bone-white);
+    line-height: 1.5rem;
+}
+
+footer a:visited {
+    color: var(--bone-white);
+}
+
+footer hr {
+    border: 1px solid var(--bone-white);
+    margin: 0.5rem;
+}
+
+.footer-container {
+    max-width: 1366px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #f9dcaf, rgb(0,0,0,0.5) 10%);
+    padding: 5rem 1rem;
+}
+
+.footer-container div {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 5rem;
+    aspect-ratio: 1/1;
+}
+
+.footer-logo a, .footer-logo a img  {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social i, footer h3 {
+    font-size: 2rem;
+    margin: 1rem;
+    color: var(--bone-white);
+
+}
+
+
+/* ==========RESPONSIVE DESIGN============= */
+
+
+/* ===== MOBILE: Media queries for small mobile resolution. ===== */
+
+/* Default styling is for mobile res <360px wide (portrait) */
+
+/* Styling for mobile res in landscape */
+@media only screen and (min-width: 361px) and (max-width: 700px) { 
+
+    .info-content {
+        width: 47.5vw;
+        padding-top: 2rem;
+        align-content: center;
+    }
+
+    .info-img {
+        width: 47.5%;
+        height: 100vh;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px 5px rgb(0,0,0,0.5);
+    }
+
+    .info-img img {
+        height: 100%;
+        width: 160%;
+        transform:translateX(25%);
+    }
+
+    .book-now-container ul {
+        max-width: 450px;
+    }
+}
+
+/* ===== TABLET: Media queries for verticle and horizontal ===== */
+
+/* tablet in portrait */
+@media only screen and (min-width: 701px) { 
+
+    nav .business-logo {
+        left: 1rem;
+        top: 1rem;
+    }
+
+    .hamburger-menu {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .home-text {
+        right: 55%;
+        top: 70%;
+        font-size: 2.5rem;
+    }
+
+    .down-icon {
+        left: 35%;
+    }
+
+    .info-img {
+        box-shadow: none;
+        background: linear-gradient(to top, transparent, var(--pink) 2rem);
+    }
+
+    .info-img img:first-child {
+        transform: rotate(5deg);
+    }
+
+    .info-img img:nth-child(2) {
+        transform: rotate(2deg);
+    }
+
+    .info-img img:nth-child(3) {
+        transform: rotate(-10deg);
+    }
+
+    .info-img img:last-child {
+        transform: rotate(-2deg);
+    }
+
+    .info-content {
+        width: 100vw;
+        padding: 0 2rem;
+    }
+
+    .info-content h3 {
+        font-size: 4rem;
+        padding-top: 3rem;
+    }
+
+    .info-content p {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+        padding-top: 2rem;
+
+    }
+
+    .info-content p:last-child {
+        padding-bottom: 3rem;
+    }
+
+    .gallery-container h2, .find-us-container h2, .contact-us-container h2, .book-now-container h2 {
+        font-size: 4rem;
+    }
+
+    .contact-us-form {
+        max-width: 40rem;
+        line-height: 2.5rem;
+    }
+
+    .contact-us-form input {
+        font-size: 1.5rem;
+        text-align: center;
+        height: 2.5rem;
+    }
+
+    .contact-us-form textarea {
+        height: 8rem;
+        font-size: 1.5rem;
+    }
+
+    .contact-us-form textarea::placeholder, .contact-us-form input::placeholder {
+        font-size: 1.5rem;
+    }
+
+    .contact-us-form button, .booking-form button {
+        font-size: 3rem;
+        height: 4rem;
+        width: 15rem;
+    }
+
+    .contact-us-container {
+    background-size: 70%;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    }
+
+    .book-now-container h3 {
+        font-size: 3rem;
+    }
+
+    .book-now-container label, .book-now-container form div input, .book-now-container form div select {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    }
+
+    .book-now-container ul li {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .book-now-container ul {
+        max-width: 650px;
+    }
+
+    .footer-logo .busines-logo {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    footer h3 {
+        font-size: 2.5rem;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) { 
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    nav ul {
+        overflow: auto;
+        display: flex;
+        height: var(--nav-height);
+        padding: 1rem;
+        width: 60%;
+        justify-content: space-between;
+        right: 0;
+        overflow: hidden;
+    }
+
+    nav ul li {
+        border-top: none;
+        align-self: center;
+    }
+
+    nav ul li:hover * {
+        color: var(--mustard);
+        border-bottom: 2px solid var(--bone-white);
+        background: transparent;
+        padding-bottom: 0.5rem;
+    }
+
+    nav ul li h2{
+        font-size: 3rem;
+    }
+
+    .info-content-container {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+
+    .info-container {
+        position: relative;
+    }
+
+    .info-content {
+        width: 50%;
+        padding: 2rem 0 0;
+        align-content: center;
+    }
+
+    .info-img {
+        width: 47.5%;
+        top: 25%;
+        max-width: calc(1366px / 2);
+        background: transparent;
+    }
+
+    .info-img img {
+        width: 100%;
+        transform:translateX(25%) rotate(0deg);
+
+    }   
+}
+
+
+
+
+
+
