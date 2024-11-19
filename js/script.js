@@ -8,42 +8,47 @@ var rootvar = document.querySelector(':root');
 function redoStyling() {
     let winWidth = window.innerWidth;
 
-    if (winWidth < 361) {
+    if (winWidth < 640) {
 
         infoContent.forEach((info) => { 
             info.style.paddingTop = `${infoImg.clientHeight}px`;
         });
+
+        rootvar.style.setProperty('--nav-height', '6rem');
         
-    } else if (winWidth > 360 && winWidth < 641) {
-        
+    } else if (winWidth >= 640 && winWidth < 768) {
+     
         infoContent.forEach((info) => { 
             info.style.paddingTop = '0';
             info.style.height = '100vh';
         });
 
         rootvar.style.setProperty('--nav-height', '6rem');
-
-    } else if (winWidth > 640 && winWidth < 1024) {
+    
+    } else if (winWidth >= 768 && winWidth < 1024) {
 
         infoContent.forEach((info) => { 
             info.style.paddingTop = `${infoImg.clientHeight}px`;
         });
 
         rootvar.style.setProperty('--nav-height', '8rem');
-
-    } else {
+    
+    } else if (winWidth >= 1024) {
 
         infoContent.forEach((info) => { 
-            info.style.paddingTop = '0';
-            info.style.height = '100vh';
+            info.style.paddingTop = '6rem';
+            info.style.height = 'auto';
         });
-    }
 
+        rootvar.style.setProperty('--nav-height', '8rem');
+    } 
 }
 
 redoStyling();
+window.onresize = function(){ location.reload(); }
 
-var infoContentBox2PosY = document.querySelector('.info-content:first-of-type').clientHeight + window.innerHeight;
+
+var infoContentBox2PosY = document.querySelector('.info-content:first-child').clientHeight + window.innerHeight;
 var infoContentBox3PosY = document.querySelector('.info-content:nth-child(2)').clientHeight + infoContentBox2PosY;
 var infoContentBox4PosY = document.querySelector('.info-content:nth-child(3)').clientHeight + infoContentBox3PosY;
 var infoContentEndPosY = document.querySelector('.info-content:last-child').clientHeight + infoContentBox4PosY;
@@ -71,7 +76,7 @@ window.addEventListener('scroll', function () {
 
     var currentScrollPos = window.scrollY;
 
-    console.log(currentScrollPos);
+    //console.log(currentScrollPos);
 
     if (prevScrollPos < currentScrollPos) {
         header.classList.add('hide');
@@ -119,8 +124,10 @@ window.addEventListener('scroll', function () {
         if (window.innerWidth >= 1366) {
             document.querySelector('.info-img img:nth-child(2)').style.right = '50vw';
             document.querySelector('.info-img img:nth-child(2)').style.transform = 'translateX(50%) rotate(2deg)';
+        } else {
+            document.querySelector('.info-img img:nth-child(2)').style.right = '0';
+            document.querySelector('.info-img img:nth-child(2)').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
         }
-        document.querySelector('.info-img img:nth-child(2)').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
     } else {
         document.querySelector('.info-img img:nth-child(2)').style.right = '-110vw';
         document.querySelector('.info-img img:nth-child(2)').style.boxShadow = 'none';
@@ -130,8 +137,10 @@ window.addEventListener('scroll', function () {
         if (window.innerWidth >= 1366) {
             document.querySelector('.info-img img:nth-child(3)').style.right = '50vw';
             document.querySelector('.info-img img:nth-child(3)').style.transform = 'translateX(50%) rotate(-10deg)';
+        } else {
+            document.querySelector('.info-img img:nth-child(3)').style.right = '0';
+            document.querySelector('.info-img img:nth-child(3)').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
         }
-        document.querySelector('.info-img img:nth-child(3)').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
     } else {
         document.querySelector('.info-img img:nth-child(3)').style.right = '-110vw';
         document.querySelector('.info-img img:nth-child(3)').style.boxShadow = 'none';
@@ -141,8 +150,10 @@ window.addEventListener('scroll', function () {
         if (window.innerWidth >= 1366) {
             document.querySelector('.info-img img:last-child').style.right = '50vw';
             document.querySelector('.info-img img:last-child').style.transform = 'translateX(50%) rotate(5deg)';
+        } else {
+            document.querySelector('.info-img img:last-child').style.right = '0';
+            document.querySelector('.info-img img:last-child').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
         }
-        document.querySelector('.info-img img:last-child').style.boxShadow = '0px 0px 10px 5px rgb(0,0,0,0.75)';
     } else {
         document.querySelector('.info-img img:last-child').style.right = '-110vw';
         document.querySelector('.info-img img:last-child').style.boxShadow = 'none';

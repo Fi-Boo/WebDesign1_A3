@@ -463,6 +463,37 @@ main::-webkit-scrollbar {
 
 @media only screen and (min-width: 1024px) { 
 
+    .hamburger-menu {
+        display: none;
+    }
+
+    nav ul {
+        overflow: auto;
+        display: flex;
+        height: var(--nav-height);
+        padding: 1rem;
+        width: 60%;
+        justify-content: space-between;
+        right: 0;
+        overflow: hidden;
+    }
+
+    nav ul li {
+        border-top: none;
+        align-self: center;
+    }
+
+    nav ul li:hover * {
+        color: var(--mustard);
+        border-bottom: 2px solid var(--bone-white);
+        background: transparent;
+        padding-bottom: 0.5rem;
+    }
+
+    nav ul li h2{
+        font-size: 3rem;
+    }
+
     .info-content-container {
         max-width: 1366px;
         margin: 0 auto;
@@ -494,6 +525,7 @@ main::-webkit-scrollbar {
 }
 
 @media only screen and (min-width: 1366px) { 
+
 
 }
 
