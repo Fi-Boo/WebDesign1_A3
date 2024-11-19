@@ -1,14 +1,10 @@
+/* ==========BASIC UNIVERSAL STYLING & CLEAN UP============= */
+    /* some basic css resetting */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;      
-}
-
-.amatic-sc-regular {
-  font-family: "Amatic SC", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .amatic-sc-bold {
@@ -17,10 +13,8 @@
   font-style: normal;
 }
 
-
-li {
-    list-style: none;
-}
+a { text-decoration: none; }
+li { list-style: none; }
 
 :root {
     --animation-timing: all 0.25s ease-in-out;
@@ -30,11 +24,7 @@ li {
     --mustard: #BAB02D;
     --blue: #1D77A5;
     --bone-white: #F4F4F4; 
-}
-
-/* removes anchor link decorations */
-a { 
-    text-decoration: none; 
+    --pink: #e6d7d4;
 }
 
 /* disables transition effect */
@@ -42,26 +32,28 @@ a {
     transition: none !important;
 }
 
-html, body {
+html, body, main {
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
-}
-
-html {
     scroll-behavior: smooth;
 }
 
+html, body {
+    overflow-x: clip;
+}
+
 body {
-    width: 100vw;
     height: 100vh;
     background: url(../images/background.jpeg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    z-index: -100;
+    z-index: -10;
 }
+
+
+/* ==========HEADER============= */
 
 .header-area {
     position: fixed;
@@ -75,8 +67,40 @@ body {
 }
 
 .header-area.hide {
-    top: calc(var(--nav-height) * -1);
+    top: calc(var(--nav-height) * -1.1);
 }
+
+
+/* ==========LOGO============= */
+
+
+.business-logo {
+    height: calc(var(--nav-height) - 1rem);
+    aspect-ratio: 1/1;
+    position: absolute;
+    margin: 0.5rem 1rem;
+    align-self: center;
+    border-radius: 50%;
+    box-shadow: var(--black-shadow);
+    z-index: 100;
+    cursor:pointer;
+    transition: var(--animation-timing);
+}
+
+.business-logo img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.business-logo:hover {
+    box-shadow: 0px 0px 5px 5px var(--red);
+}
+
+.business-logo:active {
+    box-shadow: 0px 0px 10px 5px var(--mustard);
+}
+
+/* ==========NAVIGATION============= */
 
 nav {
     position: relative;
@@ -85,31 +109,6 @@ nav {
     max-width: 1366px;
     margin: 0 auto;
     transition: var(--animation-timing);
-
-}
-
-.business-logo {
-    height: calc(var(--nav-height) - 1rem);
-    aspect-ratio: 1/1;
-    position: absolute;
-    margin: 0.5rem 1rem;
-    align-self: center;
-    background: url(../images/lilac-valley-logo.png);
-    background-size: contain;
-    border-radius: 50%;
-    box-shadow: var(--black-shadow);
-    z-index: 100;
-    cursor:pointer;
-    transition: var(--animation-timing);
-}
-
-.business-logo:hover {
-    height: var(--nav-height);
-    flex-grow: 2;
-}
-
-.business-logo:active {
-    box-shadow: 0px 0px 10px 5px var(--red);
 }
 
 nav ul {
@@ -118,16 +117,10 @@ nav ul {
     padding-top: calc(var(--nav-height) + 1rem);
     height: 0;
     width: 100vw;
+    max-width: 1366px;
     text-align: center;
     overflow-y: hidden;
-    background: linear-gradient(to bottom, rgb(0,0,0,0.5), transparent);
     transition: var(--animation-timing);
-}
-
-.hamburger-menu:has(input:checked) ~ ul {
-    height: 100vh;
-    background: linear-gradient(to bottom, rgb(0,0,0,0.5) 30%, transparent);
-    backdrop-filter: blur(5px);
 }
 
 nav ul li {
@@ -160,8 +153,10 @@ nav ul li:last-child:hover h2 {
     color: var(--mustard);
 }
 
+/* Hamburger menu */
+
 .hamburger-menu {
-    height: 4rem;
+    height: calc(var(--nav-height) * 0.66);
     aspect-ratio: 1/1;
     position: absolute;
     right: 0;
@@ -171,7 +166,13 @@ nav ul li:last-child:hover h2 {
     cursor: pointer;
 }
 
-/* creates the 3 dashes*/
+.hamburger-menu:has(input:checked) ~ ul {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5) 30%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+/* creates the 3 dashes */
 
 .hamburger-menu::before,
 .hamburger-menu::after,
@@ -181,7 +182,7 @@ nav ul li:last-child:hover h2 {
     transform: translateX(-50%);
     content: "";
     margin: 0 auto;
-    width: 3rem;
+    width: calc(var(--nav-height) / 2);
     height: 5px;
     background: var(--bone-white);
     border-radius: 555px;
@@ -198,63 +199,61 @@ nav ul li:last-child:hover h2 {
 }
 
 .hamburger-menu::before {
-    top: 1rem;
+    top: calc(var(--nav-height) / 6);
 }
 
 .hamburger-menu::after {
-    bottom: 1rem;
+    bottom: calc(var(--nav-height) / 6);
 }
 
-/* turns the 3 dashes to the */ 
+/* turns the 3 dashes to the X */ 
+
 .hamburger-menu input:checked {
-    width: 2.4rem;
+    width: calc(var(--nav-height) * 0.4);
     opacity: 0;
 }
 
 .hamburger-menu:has(input:checked)::before {
-    width: 2.4rem;
+    width: calc(var(--nav-height) * 0.4);
     rotate: -45deg;
 }
 
 .hamburger-menu:has(input:checked)::after {
-    width: 2.4rem;
+    width: calc(var(--nav-height) * 0.4);
     rotate: 45deg;
+}
+
+/* ==========MAIN BODY CONTENT============= */
+
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+main::-webkit-scrollbar {
+  display: none;
 }
 
 .home-text {
     position: fixed;
-    bottom: 50%;
+    top: 50%;
     right: 5vw;
     width: 100%;
     text-align: right;
-    font-size: 7vw;
+    font-size: 1.5rem;
     color: var(--bone-white);
     text-shadow: 2px 2px 5px black;
     z-index: -10;
 }
 
-main {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-}
-
-.section-pad {
-    height: 100vh;
-    scroll-snap-align: start;
-}
-
-.info-container {
-    position: relative;
-    height: 100vh;
-    background: #e6d7d4;
-    scroll-snap-align: start;
-}
-
+/* animated goat head popping up from the bottom of the main screen */
 .down-icon {
-    width: 5rem;
+    width: var(--nav-height);
     aspect-ratio: 1/1;
     position: absolute;
-    bottom: -5rem;
+    bottom: calc(var(--nav-height) * -1);
     left: 50%;
     transform: translateX(-50%);
     animation: 4s alternate infinite peek;
@@ -264,7 +263,7 @@ main {
 
 .down-icon:hover {
     animation: none;
-    bottom: -1.5rem; 
+    bottom: calc(var(--nav-height) * -0.3); 
 }
 
 .down-icon a img {
@@ -273,68 +272,233 @@ main {
 
 @keyframes peek {
     0% {
-        bottom: -5rem;
+        bottom: calc(var(--nav-height) * -1);
     }
-    75% {
-        bottom: -1.5rem;
+    25% {
+        bottom:  calc(var(--nav-height) * -1);
+    }
+    40% {
+        bottom:  calc(var(--nav-height) * -0.3);
     }
     100% {
-        bottom: -1.5rem;
+        bottom:  calc(var(--nav-height) * -0.3);
     }
 }
 
+#section-pad {
+    height: 100vh;
+}
 
-@media only screen and (min-width:601px) {
-    .home-text {
-        font-size: 3rem;
-    }
+/* ==========SECTION 1 STYLING============= */
+
+#info-container {
+    position: relative;
+    height: fit-content;
+    background: linear-gradient(to bottom, transparent, rgb(0,0,0,0.5) 3%) ;
+    margin: 0 auto;
+    scroll-snap-align: start;
+}
+
+.info-container2 {
+    height: 100vh;
+}
+
+.info-img {
+    width: 100vw;
+    aspect-ratio: 16/9;
+    position: fixed;
+    top: 0;
+    right: -110vw;
+    z-index: 10;
+    background: linear-gradient(to top, transparent, var(--pink) 0.5rem);
+}
+
+.info-img img {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    transition: var(--animation-timing);
+    z-index: 11;
+    top: 0;
+    right: -110vw;
+    box-shadow: none;
+}
+
+.info-content-container, .info-content-container2 {
+    width: 100%;
+    max-width: 1366px;
+    background: var(--pink);
+    box-shadow: 0 0 10px 5px rgb(0,0,0,0.75);
+    min-height: 100vh;
+    height: fit-content;
+    padding: 0 1rem;
+}
+
+.info-content h3 {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.info-content {
+    line-height: 1.5rem;
+}
+
+.info-content * {
+    margin-top: 1rem;
 }
 
 
-@media only screen and (min-width:901px) {
-    .home-text {
-        bottom: 10%;
-        right: 52%;
+/* ==========SECTION 2 STYLING============= */
+
+/* ==========SECTION 3 STYLING============= */
+
+/* ==========SECTION 4 STYLING============= */
+
+
+/* ==========FOOTER STYLIING============= */
+
+
+
+
+/* ==========RESPONSIVE DESIGN============= */
+
+
+/* ===== MOBILE: Media queries for small mobile resolution. ===== */
+
+/* Default styling is for mobile res <360px wide (portrait) */
+
+/* Styling for mobile res in landscape */
+@media only screen and (min-width: 361px) and (max-width: 700px) { 
+
+    .info-content {
+        width: 47.5vw;
+        padding-top: 2rem;
+        align-content: center;
+    }
+
+    .info-img {
+        width: 47.5%;
+        height: 100vh;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px 5px rgb(0,0,0,0.5);
+    }
+
+    .info-img img {
+        height: 100%;
+        width: 160%;
+        transform:translateX(25%);
+    }
+}
+
+/* ===== TABLET: Media queries for verticle and horizontal ===== */
+
+/* tablet in portrait */
+@media only screen and (min-width: 701px) { 
+
+    .business-logo {
+        left: 1rem;
+        top: 1rem;
     }
 
     .hamburger-menu {
-        display: none;
+        top: 1rem;
+        right: 1rem;
     }
 
-    nav ul {
-        position: relative;
-        height: var(--nav-height);
-        overflow: visible;
-        display: flex;
-        margin: 0 2rem;
-        padding: 0;
-        width: 35rem;
-        float: right;
-        justify-content: space-between;
-        background: transparent;
+    .home-text {
+        right: 55%;
+        top: 70%;
+        font-size: 2.5rem;
     }
 
-    nav ul li {
-        align-content: center;
-        border-top: none;
-        width: 100%;
+    .down-icon {
+        left: 35%;
     }
 
-
-    nav ul li:last-child h2 {
-        margin: 0;
+    .info-img {
+        box-shadow: none;
+        background: linear-gradient(to top, transparent, var(--pink) 2rem);
     }
 
-    nav ul li:first-child:hover *, nav ul li:nth-child(2):hover *, nav ul li:nth-child(3):hover * {
-        background: transparent;
-        color: var(--mustard);
-        border-bottom: 2px solid var(--bone-white);
-        padding-bottom: 0.5rem;
+    .info-img img:first-child {
+        transform: rotate(5deg);
+    }
 
+    .info-img img:nth-child(2) {
+        transform: rotate(2deg);
+    }
+
+    .info-img img:nth-child(3) {
+        transform: rotate(-10deg);
+    }
+
+    .info-img img:last-child {
+        transform: rotate(-2deg);
+    }
+
+    .info-content {
+        width: 100vw;
+        padding: 0 2rem;
+    }
+
+    .info-content h3 {
+        font-size: 4rem;
+        padding-top: 3rem;
+    }
+
+    .info-content p {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+        padding-top: 2rem;
+
+    }
+
+    .info-content p:last-child {
+        padding-bottom: 3rem;
     }
 }
 
 
-@media only screen and (min-width:1201px) {
+@media only screen and (min-width: 1024px) { 
+
+    .info-content-container {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+
+    .info-container {
+        position: relative;
+    }
+
+    .info-content {
+        width: 50%;
+        padding: 2rem 0 0;
+        align-content: center;
+    }
+
+    .info-img {
+        width: 47.5%;
+        top: 25%;
+        max-width: calc(1366px / 2);
+        background: transparent;
+    }
+
+    .info-img img {
+        width: 100%;
+        transform:translateX(25%) rotate(0deg);
+
+    }
     
 }
+
+@media only screen and (min-width: 1366px) { 
+
+}
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Lilac Farm</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,41 +12,65 @@
 <body>
     <header class="amatic-sc-bold header-area">
         <nav>
-            <div class="business-logo">
-                <a href="Index.html"></a>
-            </div>
+            <a href="Index.html" class="business-logo">
+                <img src="images/lilac-valley-logo.png" alt="Lilac Valley logo" />
+            </a>
             <label class="hamburger-menu">
                 <input type="checkbox" id="menu-toggle" />
             </label>
             <ul class="transition">
-                <li><a href=""><h2>THE GOAT</h2></a></li>
+                <li><a href="#info-container"><h2>THE GOAT</h2></a></li>
                 <li><a href=""><h2>THE BARN</h2></a></li>
                 <li><a href=""><h2>FIND US</h2></a></li>
                 <li><a href=""><h2>BOOK NOW</h2></a></li>
             </ul>
         </nav>
-        
     </header>
-    <!--
-    <div class="home-text amatic-sc-bold">
-        <h2>COME FOR THE VIEW</h2>
-        <h2>STAY FOR THE GOAT</h2>
-    </div>
-    <div class="down-icon">
-        <a href="" alt="goat icon to scroll down"><img src="images/goat.png"></a>
-    </div>-->
+    
     <main>
-        <section class="section-pad"></section>
-        <section class="info-container">
-            <figure class="info-img">
+        <div class="home-text amatic-sc-bold">
+            <h2>COME FOR THE VIEW</h2>
+            <h2>STAY FOR THE GOAT</h2>
+        </div>
+        <div class="down-icon">
+            <a href="#info-container" alt="goat icon to scroll down"><img src="images/goat.png"></a>
+        </div>
+
+        <section id="section-pad"></section>
+        <section id="info-container">
+            <div class="info-img">
+                <img src="images/Rosie.jpeg" alt="Rosie the goat" />
+                <img src="images/Family.jpeg" alt="Farm animals photo" />
+                <img src="images/Marina_and_Tom.jpeg" alt="Marina and Tom on a tractor" />
+                <img src="images/The_Barn.jpeg" alt="Picture of the barn" />
+            </div>
+            <div class="info-content-container">
+
+                <div class="info-content">
+                    <h3>THIS IS ROSIE...</h3>
+                    <p>Meet Rosie, the spirited goat with a heart full of curiosity and a playful nature. With her striking brown coat and cheerful demeanour, she loves to explore her surroundings, often leading her herd on adventurous escapades. Always ready for a cuddle or a game, Rosie brings joy and laughter to everyone she meets on the farm.</p>
+                </div>
+                <div class="info-content">
+                    <h3>HER FRIENDS...</h3>
+                    <p>Quackers, the charming duck, waddles around with a playful quack, often splashing in the pond and keeping everyone entertained. Cluckers, the feisty chicken, struts confidently, always on the lookout for tasty treats while keeping a watchful eye on her nest. Meanwhile, Penelope, the gentle pig, loves to roll in the mud and soak up the sun, bringing a warm and friendly presence to the farm with her lovable antics. Together with Rosie, they create a lively and joyful atmosphere, making every day an adventure!</p>
+                </div>
+                <div class="info-content">
+                    <h3>AND US...</h3>
+                    <p>My partner, Tom, and I (Marina) are the caretakers of the farm, dedicated to ensuring the animals are happy and healthy. We work tirelessly to maintain the property in pristine condition, creating a welcoming and safe haven for both the animals and visitors alike.</p>
+                </div>
+                <div class="info-content">
+                    <h3>ALMOST FORGOT THE BARN...</h3>
+                    <p>The luxurious barn, a true labor of love, has taken three years to transform into a breathtaking space that harmonizes rustic charm with modern sophistication. Every detail, from the handcrafted wooden beams to the elegant decor, reflects the dedication and passion poured into its renovation. This stunning structure now serves as a picturesque venue for gatherings, offering an inviting ambiance that celebrates the beauty of the farm and its surroundings.</p>
+                </div>
+            </div>
+        </section>
+        <section class="info-container2">
+            <figure class="info-img2">
             </figure>
         </section>
-        <section class="info-container">
-            <figure class="info-img">
-            </figure>
-        </section>
-        <section class="info-container">
-            <figure class="info-img">
+        <section class="info-container2">
+            <figure class="info-img2">
+                
             </figure>
         </section>
     </main>

@@ -1,0 +1,394 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;      
+}
+
+.amatic-sc-regular {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.amatic-sc-bold {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+li {
+    list-style: none;
+}
+
+:root {
+    --animation-timing: all 0.25s ease-in-out;
+    --nav-height: 6rem;
+    --black-shadow: 0px 0px 10px 5px rgb(0,0,0,0.5);
+    --red: #873627;
+    --mustard: #BAB02D;
+    --blue: #1D77A5;
+    --bone-white: #F4F4F4; 
+    --pink: #e6d7d4;
+}
+
+/* removes anchor link decorations */
+a { 
+    text-decoration: none; 
+}
+
+/* disables transition effect */
+.no-transition * {
+    transition: none !important;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: clip;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/background.jpeg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -100;
+}
+
+.header-area {
+    position: fixed;
+    height: var(--nav-height);
+    top: 0;
+    width: 100vw;
+    display: flex;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.75), transparent);
+    z-index: 100;
+    transition: var(--animation-timing);
+}
+
+.header-area.hide {
+    top: calc(var(--nav-height) * -1);
+}
+
+nav {
+    position: relative;
+    height: var(--nav-height);
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    transition: var(--animation-timing);
+
+}
+
+.business-logo {
+    height: calc(var(--nav-height) - 1rem);
+    aspect-ratio: 1/1;
+    position: absolute;
+    margin: 0.5rem 1rem;
+    align-self: center;
+    background: url(../images/lilac-valley-logo.png);
+    background-size: contain;
+    border-radius: 50%;
+    box-shadow: var(--black-shadow);
+    z-index: 100;
+    cursor:pointer;
+    transition: var(--animation-timing);
+}
+
+.business-logo:hover {
+    height: var(--nav-height);
+    flex-grow: 2;
+}
+
+.business-logo:active {
+    box-shadow: 0px 0px 10px 5px var(--red);
+}
+
+nav ul {
+    position: absolute;
+    top: 0;
+    padding-top: calc(var(--nav-height) + 1rem);
+    height: 0;
+    width: 100vw;
+    text-align: center;
+    overflow-y: hidden;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5), transparent);
+    transition: var(--animation-timing);
+}
+
+.hamburger-menu:has(input:checked) ~ ul {
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(0,0,0,0.5) 30%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+nav ul li {
+    line-height: 4rem;
+    font-size: 1.5rem;
+    border-top: 2px solid rgb(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 2px rgb(0,0,0,1);
+}
+
+nav ul li a, nav ul li a:visited {
+    color: var(--bone-white);
+}
+
+nav ul li:hover * {
+    background: var(--bone-white);
+    color: var(--red);
+}
+
+nav ul li:last-child h2 {
+    background: var(--mustard);
+    box-shadow: 2px 2px 2px 0px black;
+    width: 10rem;
+    margin: 2rem auto;
+    transform: rotate(-5deg);  
+}
+
+nav ul li:last-child:hover h2 {
+    transform:rotate(5deg);
+    background: var(--blue);
+    color: var(--mustard);
+}
+
+.hamburger-menu {
+    height: 4rem;
+    aspect-ratio: 1/1;
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+    z-index: 100;
+    filter: drop-shadow(0px 0px 10px rgb(0,0,0,1));
+    cursor: pointer;
+}
+
+/* creates the 3 dashes*/
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    margin: 0 auto;
+    width: 3rem;
+    height: 5px;
+    background: var(--bone-white);
+    border-radius: 555px;
+    transition: var(--animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    outline: none;
+    pointer-events: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hamburger-menu::before {
+    top: 1rem;
+}
+
+.hamburger-menu::after {
+    bottom: 1rem;
+}
+
+/* turns the 3 dashes to the */ 
+.hamburger-menu input:checked {
+    width: 2.4rem;
+    opacity: 0;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    width: 2.4rem;
+    rotate: -45deg;
+}
+
+.hamburger-menu:has(input:checked)::after {
+    width: 2.4rem;
+    rotate: 45deg;
+}
+
+.home-text {
+    position: fixed;
+    bottom: 50%;
+    right: 5vw;
+    width: 100%;
+    text-align: right;
+    font-size: 7vw;
+    color: var(--bone-white);
+    text-shadow: 2px 2px 5px black;
+    z-index: -10;
+}
+
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+.section-pad {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.down-icon {
+    width: 5rem;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 4s alternate infinite peek;
+    animation-delay: 2s; 
+    cursor: pointer;
+}
+
+.down-icon:hover {
+    animation: none;
+    bottom: -1.5rem; 
+}
+
+.down-icon a img {
+    width: 100%;
+}
+
+@keyframes peek {
+    0% {
+        bottom: -5rem;
+    }
+    75% {
+        bottom: -1.5rem;
+    }
+    100% {
+        bottom: -1.5rem;
+    }
+}
+
+/* info-container */
+.info-container {
+    position: relative;
+    height: fit-content;
+    background: var(--pink);
+    scroll-snap-align: start;
+}
+
+.info-container2 {
+    height: 100vh;
+}
+
+.info-img {
+    width: 100vw;
+    aspect-ratio: 16/9;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    z-index: 99;
+    padding-bottom: 1rem;
+    background: linear-gradient(to top, transparent, var(--pink) 1rem);
+}
+
+.info-img > img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    transition: var(--animation-timing);
+}
+
+.info-img img:nth-child(2), .info-img img:nth-child(3), .info-img img:last-child {
+    position: absolute;
+    top: 0;
+    right: -100vw;
+}
+
+.info-content-container, .info-content-container2 {
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 1rem;
+
+}
+
+.info-content h3 {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.info-content {
+    line-height: 1.5rem;
+}
+
+.info-content * {
+    margin-top: 1rem;
+}
+
+@media only screen and (min-width:601px) {
+    .home-text {
+        font-size: 3rem;
+    }
+}
+
+
+@media only screen and (min-width:901px) {
+    .home-text {
+        bottom: 10%;
+        right: 52%;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    nav ul {
+        position: relative;
+        height: var(--nav-height);
+        overflow: visible;
+        display: flex;
+        margin: 0 2rem;
+        padding: 0;
+        width: 35rem;
+        float: right;
+        justify-content: space-between;
+        background: transparent;
+    }
+
+    nav ul li {
+        align-content: center;
+        border-top: none;
+        width: 100%;
+    }
+
+
+    nav ul li:last-child h2 {
+        margin: 0;
+    }
+
+    nav ul li:first-child:hover *, nav ul li:nth-child(2):hover *, nav ul li:nth-child(3):hover * {
+        background: transparent;
+        color: var(--mustard);
+        border-bottom: 2px solid var(--bone-white);
+        padding-bottom: 0.5rem;
+
+    }
+
+    .down-icon {
+        left: 40%;
+    }
+}
+
+
+@media only screen and (min-width:1201px) {
+    
+}
