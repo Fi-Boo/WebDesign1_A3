@@ -27,7 +27,7 @@ li { list-style: none; }
     --pink: #e6d7d4;
 }
 
-/* disables transition effect */
+/* disables transition effect - this is applied via JS when resizing*/
 .no-transition * {
     transition: none !important;
 }
@@ -67,6 +67,7 @@ body {
     transition: var(--animation-timing);
 }
 
+/* used with JS scroll event to hide/show the nav depending on scroll direction */
 .header-area.hide {
     top: calc(var(--nav-height) * -1.1);
 }
@@ -155,7 +156,9 @@ nav ul li:last-child:hover h2 {
     border-bottom: none;
 }
 
-/* Hamburger menu */
+/* Hamburger menu - I went with a custom one based on the following Youtube tutorial
+   https://www.youtube.com/watch?v=dAIVbLrAb_U
+   I like the hamburger to X animation. */
 
 .hamburger-menu {
     height: calc(var(--nav-height) * 0.66);
@@ -250,7 +253,8 @@ main::-webkit-scrollbar {
     z-index: -10;
 }
 
-/* animated goat head popping up from the bottom of the main screen */
+/* animated goat head popping up from the bottom of the main screen 
+   Also acts as a scroll down button when clicked */
 .down-icon {
     width: var(--nav-height);
     aspect-ratio: 1/1;
@@ -272,6 +276,8 @@ main::-webkit-scrollbar {
     width: 100%;
 }
 
+/* peaking animation. Stays up for longer than it hides away */
+
 @keyframes peek {
     0% {
         bottom: calc(var(--nav-height) * -1);
@@ -292,6 +298,9 @@ main::-webkit-scrollbar {
 }
 
 /* ==========SECTION 1 STYLING============= */
+
+/* Definitely the longest section to style. I wanted the images to appear as the user scrolls down the page. A LOT of trial and error as there were no tutorials. */
+
 
 #about-us {
     position: relative;
@@ -355,8 +364,9 @@ main::-webkit-scrollbar {
 
 /* ==========SECTION 2 STYLING============= */
 
-/* pure css masonry gallery */
+/* pure css masonry gallery. Automatically reduces columns based on size. Simple and clean. Very 'in' trend that seems to be used a lot these days. */
 /* https://www.youtube.com/watch?v=RuJyYiRttpI */
+/* I removed the coloured background to allow the white silhouettes background show through but there isn't enough space between the images. */
 
 #gallery {
     position: relative;
@@ -406,6 +416,7 @@ main::-webkit-scrollbar {
 }
 
 /* ==========SECTION 3 STYLING============= */
+/* simple ordinary form. Nothing special or unique here */
 
 #contact-us {
     height: fit-content;
@@ -476,6 +487,7 @@ main::-webkit-scrollbar {
 
 
 /* ==========SECTION 4 STYLING============= */
+/* another simple ordinary form. I guess the white silhouettes of the animals gets to stand out a lil more here */
 
 #book-now {
     height: fit-content;
@@ -592,11 +604,6 @@ footer hr {
     color: var(--bone-white);
 
 }
-
-
-
-
-
 
 
 /* ==========RESPONSIVE DESIGN============= */
