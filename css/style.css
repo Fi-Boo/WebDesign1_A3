@@ -578,7 +578,7 @@ footer hr {
 .footer-container {
     max-width: 1366px;
     margin: 0 auto;
-    background: linear-gradient(to bottom, #f9dcaf, rgb(0,0,0,0.5) 10%);
+    background: linear-gradient(to bottom, #f9dcaf, transparent 20%);
     padding: 5rem 1rem;
 }
 
