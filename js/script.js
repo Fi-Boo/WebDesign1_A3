@@ -80,28 +80,20 @@ window.addEventListener('scroll', function () {
 
     if (prevScrollPos < currentScrollPos) {
         header.classList.add('hide');
-        if (window.scrollY < window.innerHeight) {
-            window.scrollTo({
-                top: window.innerHeight, // Scroll to the height of the viewport
-                behavior: 'smooth' // Smooth scrolling effect
-            });
-        }
         document.getElementById('menu-toggle').checked = false;
+        document.querySelector('.home-text').style.opacity = "0";
     } else {
         header.classList.remove('hide');
         if (currentScrollPos < prevScrollPos && (window.scrollY < (window.innerHeight + 20))) {
-            window.scrollTo({
-                top: 0, 
-                behavior: 'smooth' // Smooth scrolling effect
-            });
             document.querySelector('.info-img').style.transition = "none";
             document.querySelector('.info-img').style.right = '-110vw';
+            document.querySelector('.home-text').style.opacity = "100";
         }
     }
 
     
 
-    if (currentScrollPos >= window.innerHeight && currentScrollPos <= (infoContentBox4PosY + 160)) {
+    if (currentScrollPos >= (window.innerHeight - 60) && currentScrollPos <= (infoContentBox4PosY + 160)) {
         document.querySelector('.info-img').style.transition = "var(--animation-timing)";
         if (window.innerWidth >= 1366) {
             document.querySelector('.info-img').style.right = '0';

@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Lilac Farm</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,10 +21,10 @@
                 <input type="checkbox" id="menu-toggle" />
             </label>
             <ul class="transition">
-                <li><a href="#info-container"><h2>THE GOAT</h2></a></li>
-                <li><a href=""><h2>THE BARN</h2></a></li>
-                <li><a href=""><h2>FIND US</h2></a></li>
-                <li><a href=""><h2>BOOK NOW</h2></a></li>
+                <li><a href="#about-us"><h2>THE GOAT</h2></a></li>
+                <li><a href="#gallery"><h2>THE BARN</h2></a></li>
+                <li><a href="#contact-us"><h2>QUESTION?</h2></a></li>
+                <li><a href="#book-now"><h2>BOOK NOW</h2></a></li>
             </ul>
         </nav>
     </header>
@@ -33,11 +35,11 @@
             <h2>STAY FOR THE GOAT</h2>
         </div>
         <div class="down-icon">
-            <a href="#info-container" alt="goat icon to scroll down"><img src="images/goat.png"></a>
+            <a href="#about-us" alt="goat icon to scroll down"><img src="images/goat.png"></a>
         </div>
 
         <section id="section-pad"></section>
-        <section id="info-container">
+        <section id="about-us">
             <div class="info-img">
                 <img src="images/Rosie.jpeg" alt="Rosie the goat" />
                 <img src="images/Family.jpeg" alt="Farm animals photo" />
@@ -46,37 +48,147 @@
             </div>
             <div class="info-content-container">
 
-                <div class="info-content">
+                <div data-aos="zoom-in" class="info-content">
                     <h3>THIS IS ROSIE...</h3>
                     <p>Meet Rosie, the spirited goat with a heart full of curiosity and a playful nature. With her striking brown coat and cheerful demeanour, she loves to explore her surroundings, often leading her herd on adventurous escapades. Always ready for a cuddle or a game, Rosie brings joy and laughter to everyone she meets on the farm.</p>
                 </div>
-                <div class="info-content">
+                <div data-aos="fade-right" class="info-content">
                     <h3>HER FRIENDS...</h3>
                     <p>Quackers, the charming duck, waddles around with a playful quack, often splashing in the pond and keeping everyone entertained. Cluckers, the feisty chicken, struts confidently, always on the lookout for tasty treats while keeping a watchful eye on her nest. Meanwhile, Penelope, the gentle pig, loves to roll in the mud and soak up the sun, bringing a warm and friendly presence to the farm with her lovable antics. Together with Rosie, they create a lively and joyful atmosphere, making every day an adventure!</p>
                 </div>
-                <div class="info-content">
+                <div data-aos="fade-right" class="info-content">
                     <h3>AND US...</h3>
                     <p>My partner, Tom, and I (Marina) are the caretakers of the farm, dedicated to ensuring the animals are happy and healthy. We work tirelessly to maintain the property in pristine condition, creating a welcoming and safe haven for both the animals and visitors alike.</p>
                 </div>
-                <div class="info-content">
+                <div data-aos="fade-right" class="info-content">
                     <h3>ALMOST FORGOT THE BARN...</h3>
                     <p>The luxurious barn, a true labor of love, has taken three years to transform into a breathtaking space that harmonizes rustic charm with modern sophistication. Every detail, from the handcrafted wooden beams to the elegant decor, reflects the dedication and passion poured into its renovation. This stunning structure now serves as a picturesque venue for gatherings, offering an inviting ambiance that celebrates the beauty of the farm and its surroundings.</p>
                 </div>
             </div>
         </section>
-        <section class="info-container2">
-            <figure class="info-img2">
-            </figure>
+        <section id="gallery">
+            <div class="gallery-container">
+                <h2 data-aos="zoom-in" class="amatic-sc-bold">MORE OF THE GOAT...AND THE BARN</h2>
+                <div class="image-container">
+                    <img data-aos="zoom-in" src="images/gallery-1.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-2.jpeg" alt="">
+                    <img data-aos="zoom-in"src="images/gallery-3.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-4.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-5.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-6.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-7.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-8.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-9.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-10.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-11.jpeg" alt="">
+                    <img data-aos="zoom-in" src="images/gallery-12.jpeg" alt="">
+                </div>
+            </div>
         </section>
-        <section class="info-container2">
-            <figure class="info-img2">
-                
-            </figure>
+        <section id="contact-us">
+            <div class="contact-us-container">
+                <h2 data-aos="zoom-in" class="amatic-sc-bold">GOT A QUESTION?</h2>
+                <form class="contact-us-form" action="" method="post">
+                    <input type="text" id="name" placeholder="Your name">
+                    <input type="email" id="email" placeholder="Email">
+                    <textarea type="text" row="4" placeholder="Message"></textarea>
+                    
+                    <label class="container"><input type="checkbox" id="newsletter-subscribe"> I would like to receive the newsletter
+                        
+                    </label>
+                    <button class="amatic-sc-bold" value="Submit">Submit</button>
+                </form>
+            </div>
+        </section>
+        <section id="book-now">
+            <div class="book-now-container">
+                <h2 data-aos="zoom-in" class="amatic-sc-bold">BOOKING INCLUSIONS</h2>
+                <ul data-aos="fade-right">
+                    <li><h4>Accommodation Essentials</h4></li>
+                    <li>Comfortable beds with quality linens and pillows</li>
+                    <li>Clean towerls and basic toiletries</li>
+                    <li>Heating and Cooling systems</li>
+                    <li>Plenty of storage space</li>
+                    <li>Private or shared bathroom facilities with hot water</li>
+                    <li>Kitchenette or communal kitchen access</li>
+                </ul>
+                <hr>
+                <ul data-aos="fade-left">
+                    <li><h4>Food and Beverage</h4></li>
+                    <li>Complimentary breakfast or DIY farm style meals</li>
+                    <li>Tea and coffee-making facilities</li>
+                    <li>Access to fresh farm produce</li>
+                    <li>On-site dining options available</li>
+                    <li>BBQ and outdoor cooking facilities</li>
+                </ul>
+                <hr>
+                <ul data-aos="fade-up">
+                    <li><h4>Farm experience Features</h4></li>
+                    <li>Guided or self-guided tours</li>
+                    <li>Opportunities to interact with farm animals</li>
+                    <li>Farm activities (Fruit picking, horse riding, fishing, etc)</li>
+                    <li>Demonstrations or workshops</li>
+                    <li>Seasonal activities</li>
+                </ul>
+                <h2 data-aos="zoom-in" class="amatic-sc-bold">BOOK YOUR ROSIE EXPERIENCE NOW</h2>
+                <h3 class="amatic-sc-bold">WE'LL THROW IN THE BARN FOR FREE</h3>
+
+                <form class="booking-form" action="" method="post">
+                    <div>
+                        <label for="checkin-date">Check-in</label>
+                        <input type="date" id="checkin-date">
+                    </div>
+                    <div>
+                        <label for="checkout-date">Check-in</label>
+                        <input type="date" id="checkout-date">
+                    </div>
+                    <div>
+                        <label for="guests-count">Guests</label>
+                        <select id="guests-count" required="required">
+                            <option value="" disabled selected>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
+                        </select>
+                    </div>
+                    <button class="amatic-sc-bold" value="Submit">BOOK</button>
+                </form>
+            </div>
         </section>
     </main>
     <footer>
-         
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="Index.html" class="business-logo">
+                    <img src="images/lilac-valley-logo.png" alt="Lilac Valley logo" />
+                </a>
+            </div>
+            <div class="footer-contact">
+                <h3 class="amatic-sc-bold">LILAC VALLEY FARM STAY</h3>
+                <p>4 Eva Way, Blue Mountains 2456, NSW</p>
+                <p><i class="fas fa-envelope"></i>: <a href="">enquiry@lilacvalleyfarm.com</a></p>
+                <p><i class="fas fa-phone"></i>: <a href="">+61 123 456 789</a></p>
+            </div>
+            <div class="footer-social">
+                <h3 class="amatic-sc-bold">Follow Us</h3>
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <hr>
+                 <p>&copy; 2024 Lilac Valley Farm (Curtin University - Phi Bui Student# 21905474). All rights reserved.</p>
+            </div>
+        </div>
     </footer>
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
