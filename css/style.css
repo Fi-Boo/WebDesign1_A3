@@ -157,8 +157,9 @@ nav ul li:last-child:hover h2 {
 }
 
 /* Hamburger menu - I went with a custom one based on the following Youtube tutorial
-   https://www.youtube.com/watch?v=dAIVbLrAb_U
-   I like the hamburger to X animation. */
+   https://www.youtube.com/watch?v=dAIVbLrAb_U (Web Dev Simplified. 2023.)
+   I like the hamburger to X animation. 
+*/
 
 .hamburger-menu {
     height: calc(var(--nav-height) * 0.66);
@@ -364,9 +365,10 @@ main::-webkit-scrollbar {
 
 /* ==========SECTION 2 STYLING============= */
 
-/* pure css masonry gallery. Automatically reduces columns based on size. Simple and clean. Very 'in' trend that seems to be used a lot these days. */
-/* https://www.youtube.com/watch?v=RuJyYiRttpI */
-/* I removed the coloured background to allow the white silhouettes background show through but there isn't enough space between the images. */
+/* pure css masonry gallery. Automatically reduces columns based on size. Simple and clean. Very 'in' trend that seems to be used a lot these days. 
+   https://www.youtube.com/watch?v=RuJyYiRttpI  (Mr. Web Designer. 2021) 
+   I removed the coloured background to allow the white silhouettes background show through but there isn't enough space between the images. 
+*/
 
 #gallery {
     position: relative;
